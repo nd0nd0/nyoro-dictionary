@@ -1,6 +1,6 @@
 import { data } from "react-router";
 import type { Route } from "./+types/test";
-import { getDb } from "~/db.server";
+import { getDB } from "~/db.server";
 import { inArray, sql } from "drizzle-orm";
 import { dictionaryEntries, dictionarySearch } from "drizzle/schema";
 export async function loader({ request, context }: Route.LoaderArgs) {
@@ -14,7 +14,7 @@ export async function loader({ request, context }: Route.LoaderArgs) {
     });
   }
 
-  const db = getDb(context.cloudflare.env.DB);
+  const db = getDB(context.cloudflare.env.DB);
 
   const results = await db
     .select()
