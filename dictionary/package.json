@@ -9,6 +9,7 @@
     "typecheck": "react-router typegen && tsc",
     "cf-typegen": "wrangler types && react-router typegen",
     "check": "tsc && react-router build && wrangler deploy --dry-run",
+    "preview": "pnpm run build && wrangler pages dev ./build/client --compatibility-date=2025-11-22 --compatibility-flag=nodejs_compat",
     "deploy": "wrangler deploy"
   },
   "dependencies": {
