@@ -10,5 +10,13 @@
   "upload_source_maps": true,
   "vars": {
     "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "dictionary-db",
+      "database_id": "2c9c4c61-f00f-4264-982d-37d94af4e3b4",
+      "migrations_dir": "drizzle"
+    }
+  ]
 }

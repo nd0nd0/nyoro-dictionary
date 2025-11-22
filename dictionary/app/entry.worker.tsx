@@ -1,21 +1,25 @@
-import type { RequestHandler } from "react-router";
-import { RouterContextProvider, createRequestHandler } from "react-router";
+// workerts/app.ts
+import { createRequestHandler, RouterContextProvider } from "react-router";
+import { cloudflareContext } from "./context";
 
-let handler: RequestHandler | null = null;
+declare module "react-router" {
+  export interface AppLoadContext {
+    cloudflare: {
+      env: Env;
+      ctx: ExecutionContext;
+    };
+  }
+}
+
+const requestHandler = createRequestHandler(
+  () => import("virtual:react-router/server-build"),
+  import.meta.env.MODE
+);
 
 export default {
-  async fetch(request: Request) {
-    // Dynamically import React Router server build
-    // This helps reduce worker init time
-    let build = await import("virtual:react-router/server-build");
-    // Only create a request handler if `handler` is still null (first request)
-    if (handler === null) handler = createRequestHandler(build);
-
-    // Create a new router context for each request
-    let context = new RouterContextProvider();
-
-    // Call the handler with the request and context and return the response
-    // @ts-ignore
-    return await handler(request, context);
+  async fetch(request, env, ctx) {
+    const contextProvider = new RouterContextProvider();
+    contextProvider.set(cloudflareContext, { env, ctx });
+    return requestHandler(request, { cloudflare: { env, ctx } });
   },
-} satisfies ExportedHandler<Cloudflare.Env>;
+} satisfies ExportedHandler<Env>;
