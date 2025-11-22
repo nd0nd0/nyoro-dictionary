@@ -1,14 +1,14 @@
 {
-	"$schema": "./node_modules/wrangler/config-schema.json",
-	"name": "runyoro-rutooro-dictionary",
-	"main": "./workers/app.ts",
-	"compatibility_date": "2025-11-22",
-	"compatibility_flags": ["nodejs_compat"],
-	"observability": {
-		"enabled": true
-	},
-	"upload_source_maps": true,
-	"vars": {
-		"VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
-	}
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "runyoro-rutooro-dictionary",
+  "main": "./build/server/index.js",
+  "compatibility_date": "2025-11-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true
+  },
+  "upload_source_maps": true,
+  "vars": {
+    "VALUE_FROM_CLOUDFLARE": "Hello from Cloudflare"
+  }
 }
