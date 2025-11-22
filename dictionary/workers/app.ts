@@ -10,11 +10,12 @@ declare module "react-router" {
 }
 
 const requestHandler = createRequestHandler(
-  //  () => import("virtual:react-router/server-build"),
-  // import.meta.env.MODE
-  // @ts-expect-error - This will be resolved after build
-  () => import("../build/server/index.js"),
-  "production"
+  // Use virtual import during development, built file for production
+  import.meta.env.DEV
+    ? () => import("virtual:react-router/server-build")
+    : // @ts-expect-error - This will be resolved after build
+      () => import("../build/server/index.js"),
+  import.meta.env.MODE
 );
 
 export default {

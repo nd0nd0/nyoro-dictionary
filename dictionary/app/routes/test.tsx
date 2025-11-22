@@ -8,5 +8,5 @@ export function loader() {
 }
 
 export default function Test({ loaderData }: Route.ComponentProps) {
-  return <div>{loaderData.message}</div>;
+  return <div className="text-red-500">{loaderData.message}</div>;
 }
