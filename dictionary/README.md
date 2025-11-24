@@ -16,6 +16,10 @@ The Runyoro-Rutooro Dictionary is a digital language resource that provides tran
 - **🎨 Modern UI**: Clean, accessible interface with smooth animations using Framer Motion
 - **🌐 SEO Optimized**: Individual URLs for each word with proper meta tags
 
+> [!IMPORTANT] > **Educational Purpose**: This project is created for educational and learning purposes to demonstrate modern web development practices using React Router v7, Cloudflare Workers, and edge computing technologies.
+>
+> **Data Ownership**: The dictionary data (translations and audio pronunciations) used in this project is sourced from [runyorodictionary.com](http://runyorodictionary.com). I do not own or claim ownership of this data. All content rights belong to their respective owners. This project serves as a technical implementation showcase and tribute to the original work.
+
 ## 🏗️ Architecture
 
 ### Tech Stack
