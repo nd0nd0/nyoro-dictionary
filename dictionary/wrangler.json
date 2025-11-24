@@ -18,5 +18,11 @@
       "database_id": "2c9c4c61-f00f-4264-982d-37d94af4e3b4",
       "migrations_dir": "drizzle"
     }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "R2",
+      "bucket_name": "dictionary-r2"
+    }
   ]
 }

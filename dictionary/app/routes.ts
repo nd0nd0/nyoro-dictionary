@@ -15,4 +15,6 @@ export default [
     // Example: /word/ground, /word/abandon, etc.
     route("word/:slug", "routes/_layout.word.$slug.tsx"),
   ]),
+  // Fetch Audio File
+  route("api/audio/:filename", "routes/api.audio.$filename.tsx"),
 ] satisfies RouteConfig;

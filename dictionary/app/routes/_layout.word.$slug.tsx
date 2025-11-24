@@ -3,6 +3,7 @@ import type { Route } from "./+types/_layout.word.$slug";
 import { getDB, getWordBySlug } from "~/db.server";
 import { LuArrowLeft } from "react-icons/lu";
 import { AudioPlayer } from "~/components/AudioPlayer";
+import { getAudioUrl } from "~/utils/audio";
 
 export async function loader({ params, context }: Route.LoaderArgs) {
   const { slug } = params;
@@ -13,7 +14,10 @@ export async function loader({ params, context }: Route.LoaderArgs) {
     throw data({ message: "Word not found" }, { status: 404 });
   }
 
-  return { word };
+  // Convert the database audio path to an API URL
+  const audioUrl = getAudioUrl(word.audioPath);
+
+  return { word: { ...word, audioUrl } };
 }
 
 export function meta({ data }: Route.MetaArgs) {
@@ -64,7 +68,7 @@ export default function WordDetail({ loaderData }: Route.ComponentProps) {
           </div>
 
           {/* Audio Player */}
-          <AudioPlayer audioUrl={word.audioPath} />
+          <AudioPlayer audioUrl={word.audioUrl} />
         </div>
 
         {/* Translations Grid */}
