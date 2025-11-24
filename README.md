@@ -194,8 +194,17 @@ CREATE VIRTUAL TABLE dictionary_search USING fts5(
 
 - Node.js 18+
 - pnpm (or npm/yarn)
-- Cloudflare account (for deployment)
-- Wrangler CLI
+- **Cloudflare account** (free tier available)
+- Wrangler CLI (`npm install -g wrangler`)
+
+### Cloudflare Requirements
+
+This project requires the following Cloudflare services:
+
+1. **Cloudflare Account** - Sign up at [dash.cloudflare.com](https://dash.cloudflare.com/)
+2. **D1 Database** - Serverless SQLite database
+3. **R2 Bucket** - Object storage for audio files
+4. **Workers** - Edge runtime for the application
 
 ### Installation
 
@@ -209,6 +218,28 @@ pnpm install
 # Generate TypeScript types
 pnpm run cf-typegen
 ```
+
+### Environment Configuration
+
+1. **Copy the example environment file**:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. **Get your Cloudflare credentials**:
+
+   - **Account ID**: Find at [dash.cloudflare.com](https://dash.cloudflare.com/) (right sidebar)
+   - **Database ID**: Run `wrangler d1 list` or check Workers & Pages > D1
+   - **D1 Token**: Create at [dash.cloudflare.com/profile/api-tokens](https://dash.cloudflare.com/profile/api-tokens)
+     - Required permissions: `D1:Edit`
+
+3. **Update `.env` with your values**:
+   ```env
+   CLOUDFLARE_ACCOUNT_ID=your_account_id_here
+   CLOUDFLARE_DATABASE_ID=your_database_id_here
+   CLOUDFLARE_D1_TOKEN=your_d1_token_here
+   ```
 
 ### Development
 

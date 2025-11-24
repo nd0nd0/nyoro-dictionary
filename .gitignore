@@ -9,3 +9,7 @@
 # Wrangler (Cloudflare)
 .wrangler/
 /data
+
+# Generated files
+*.log
+drizzle/seed.sql
