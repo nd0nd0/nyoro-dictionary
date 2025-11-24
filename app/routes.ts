@@ -16,5 +16,5 @@ export default [
     route("word/:slug", "routes/_layout.word.$slug.tsx"),
   ]),
   // Fetch Audio File
-  route("api/audio/:filename", "routes/api.audio.$filename.tsx"),
+  route("api/audio/:filename", "routes/api.audio.$filename.ts"),
 ] satisfies RouteConfig;

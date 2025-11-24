@@ -8,7 +8,7 @@ const __dirname = dirname(__filename);
 
 async function seed() {
   console.log("⏳ Reading JSON file...");
-  const filePath = path.join(__dirname, "angular_dump.json");
+  const filePath = path.join(__dirname, "..", "data", "angular_dump.json");
   const rawData = fs.readFileSync(filePath, "utf8");
   const jsonData = JSON.parse(rawData).filter(
     (item: any) => item.english_term && item.runyoro_term

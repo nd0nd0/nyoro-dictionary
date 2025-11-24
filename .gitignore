@@ -1,1 +1,11 @@
-dictionary/drizzle/angular_dump.json
+.DS_Store
+.env
+/node_modules/
+
+# React Router
+/.react-router/
+/build/
+
+# Wrangler (Cloudflare)
+.wrangler/
+/data
