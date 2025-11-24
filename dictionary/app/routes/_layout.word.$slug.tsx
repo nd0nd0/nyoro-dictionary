@@ -1,4 +1,4 @@
-import { data, Link } from "react-router";
+import { data, useNavigate } from "react-router";
 import type { Route } from "./+types/_layout.word.$slug";
 import { getDB, getWordBySlug } from "~/db.server";
 import { LuArrowLeft } from "react-icons/lu";
@@ -37,19 +37,19 @@ export function meta({ data }: Route.MetaArgs) {
 
 export default function WordDetail({ loaderData }: Route.ComponentProps) {
   const { word } = loaderData;
+  const navigate = useNavigate();
 
   return (
     <div className="w-full md:max-w-4xl md:mx-auto">
       {/* Back button - mobile only */}
       <div className="md:hidden sticky top-0 bg-white border-b p-4 z-10">
-        <Link
-          to="/"
-          viewTransition
-          className="flex items-center gap-2 text-gray-700 hover:text-gray-900"
+        <button
+          onClick={() => navigate(-1)}
+          className="flex cursor-pointer items-center gap-2 text-gray-700 hover:text-gray-900"
         >
           <LuArrowLeft className="w-5 h-5" />
           <span>Back to Search</span>
-        </Link>
+        </button>
       </div>
 
       {/* Word Definition Content */}

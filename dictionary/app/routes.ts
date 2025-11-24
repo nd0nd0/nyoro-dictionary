@@ -15,7 +15,4 @@ export default [
     // Example: /word/ground, /word/abandon, etc.
     route("word/:slug", "routes/_layout.word.$slug.tsx"),
   ]),
-
-  // Keep test route outside of layout
-  route("test", "routes/test.tsx"),
 ] satisfies RouteConfig;

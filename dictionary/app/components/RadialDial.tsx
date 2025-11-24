@@ -41,7 +41,12 @@ export function RadialDial() {
       <div className="hidden md:block">
         <div
           ref={containerRef}
-          className="radial-dial-mask h-[400px] overflow-y-auto snap-y snap-mandatory py-8"
+          className={`h-[600px] overflow-y-auto snap-y snap-mandatory py-8 ${
+            // Don't apply mask to top if early letters (A-E) are selected
+            activeLetter && ["A", "B", "C", "D", "E"].includes(activeLetter)
+              ? ""
+              : "radial-dial-mask"
+          }`}
         >
           <div className="flex flex-col items-center space-y-2">
             {LETTERS.map((l) => (
@@ -78,8 +83,15 @@ export function RadialDial() {
       </div>
 
       {/* Mobile: Horizontal Dial */}
-      <div className="md:hidden sticky top-0 z-10 bg-stone-50 border-b border-gray-200">
-        <div className="horizontal-dial-mask overflow-x-auto snap-x snap-mandatory px-4 py-3">
+      <div className="md:hidden sticky top-0 z-10  bg-stone-50 border-b border-gray-200">
+        <div
+          className={`overflow-x-auto snap-x snap-mandatory px-4 py-3 ${
+            // Don't apply mask to left if early letters (A-E) are selected
+            activeLetter && ["A", "B", "C", "D", "E"].includes(activeLetter)
+              ? ""
+              : "horizontal-dial-mask"
+          }`}
+        >
           <div className="flex space-x-2 min-w-max">
             {LETTERS.map((l) => (
               <motion.button
@@ -97,7 +109,9 @@ export function RadialDial() {
                 className={`
                   snap-center
                   px-4 py-2
-                  min-w-[3rem]
+                  cursor-pointer
+
+                  min-w-12
                   rounded-lg
                   transition-colors
                   ${
