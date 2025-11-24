@@ -139,7 +139,7 @@ The app uses a **master-detail layout** pattern:
 
 ## 🎵 Audio Implementation
 
-Audio files are served from Cloudflare R2 storage. See [R2_AUDIO_IMPLEMENTATION.md](./R2_AUDIO_IMPLEMENTATION.md) for detailed documentation.
+Audio files are served from Cloudflare R2 storage.
 
 ### How It Works
 
